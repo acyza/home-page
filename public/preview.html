@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预览作品</title>
+  <style>
+    iframe {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .tip {
+      background-color: #292929cc;
+      position: fixed;
+      inset: 0;
+      bottom: auto;
+      z-index: 10000000;
+      text-align: center;
+      padding: 30px;
+      font-size: 20pt;
+      text-shadow: 2px 2px 3px #979797;
+      color: #fff;
+      font-weight: bold;
+      opacity: 0;
+      animation: 3s hideTip;
+      display: none;
+    }
+    @keyframes hideTip {
+      0% {
+        opacity: 0;
+        display: block;
+      }
+      30% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tip">预览作品中…</div>
+  <iframe id="preview">
+  </iframe>
+  <script>
+    document.querySelector("#preview")
+      .src = "/./" + location.href.substring(location.href.lastIndexOf("#") + 1);
+  </script>
+</body>
+</html>

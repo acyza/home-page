@@ -1,0 +1,23 @@
+name: update
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: npm install
+        run: "npm install"
+      - name: genInfo
+        run: node ./genInfo.js ${{ github.repository }}
+      - name: npm run build
+        run: "npm run build"
+      - name: chmod
+        run: "chmod +x ./deploy.sh"
+      - name: deploy
+        run: "./deploy.sh"
+        env:
+          GITHUB_TOKEN: ${{ secrets.UPDATE_TIGGER }}

@@ -1,0 +1,17 @@
+body,html {
+  margin: 0;
+  padding: 0;
+  min-width: 600px;
+}
+
+.link {
+  color: #525252;
+  text-decoration: none;
+  font-size: 16pt;
+  position: relative;
+  display: block;
+  &:hover {
+    color: #ffab2d;
+    text-decoration: underline;
+  }
+}
